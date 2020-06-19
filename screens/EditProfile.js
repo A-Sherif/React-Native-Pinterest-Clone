@@ -14,7 +14,9 @@ export default function Settings({navigation}){
                     <Ionicons name='ios-arrow-back' size={30}/>
                 </TouchableOpacity>
                 <Text style={{flex:3,alignSelf:'center',textAlign:"center"}}>Edit profile</Text>
-                <TouchableOpacity style={{backgroundColor:'#e2e2e2',borderRadius:10,flex:1,alignContent:'center'}}>
+                <TouchableOpacity style={{backgroundColor:'#e2e2e2',borderRadius:10,flex:1,alignContent:'center'}}
+                onPress={()=>navigation.goBack()}
+                >
                   <Text style={{fontWeight:"bold", textAlign:"center"}}>Done</Text>
                 </TouchableOpacity>
             </View>

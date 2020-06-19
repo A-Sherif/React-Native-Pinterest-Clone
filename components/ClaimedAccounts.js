@@ -39,7 +39,7 @@ export default function LoginOptions({navigation}){
                         />
                 </View>
                 <View>
-                    <Text>Yotube</Text>
+                    <Text>Youtube</Text>
                     <Switch
                         trackColor={{ false: "#e2e2e2", true: "#043f61" }}
                         thumbColor={isEnabled ? "#043f61" : "#a3a3a3"}
