@@ -73,7 +73,7 @@ const updateSecureTextEntry= () =>{
                     onChangeText={(val)=>TextInputChange(val)}
                     style={{width:350,padding:10,flex:2}}
                     clearButtonMode= 'always'
-                    ></TextInput>
+                    />
                     <TouchableOpacity 
                     >
                     {data.check_textInputChange ?
@@ -88,13 +88,13 @@ const updateSecureTextEntry= () =>{
                     <TextInput
                     placeholder='Enter your password'
                     autoCapitalize='none'
-                    secureTextEntry= {data.secureTextEntry}
+                    secureTextEntry= {data.secureTextEntry ? true : false}
                     onChangeText={(val)=> passwordChange(val)}
                     style={{width:350,padding:10,flex:2}}
-                    ></TextInput>
+                    />
                     
                     <TouchableOpacity onPress={updateSecureTextEntry}>
-                        {data.passwordChange ?
+                        {data.secureTextEntry ?
                         <Ionicons name='md-eye' size={20}/>
                         :
                         <Ionicons name='ios-eye' size={20}/>
