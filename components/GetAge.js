@@ -1,60 +1,66 @@
 import React from 'react'
-import { View,Text,TextInput,TouchableOpacity,StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import Constants from 'expo-constants'
 import { Ionicons } from '@expo/vector-icons';
-import Header from './SignUpHeader'
-
-export default function GetAge({route,navigation}){
-
-    const {nameVal} = route.params;
+export default function GetAge({ route, navigation }) {
 
     const [data, setData] = React.useState({
-        age:'',
+        age: '',
         check_textInputChange: false,
         secureTextEntry: true
     });
 
     const ageChange = (val) => {
-        if(val.length != 0){
+        if (val.length != 0) {
             setData({
                 ...data,
                 age: val,
-                check_age:true
+                check_age: true
             })
-        }else {
+        } else {
             setData({
                 ...data,
                 age: val,
-                check_age:false
-            }) 
+                check_age: false
+            })
+        }
     }
-}
 
-    return(
+    return (
         <View style={styles.Container}>
-            <Header headerText="Sign up"/>
-            <View style={{flex:4}}>
-                <Text style={{fontWeight:"bold",fontSize:40}}>Hi {JSON.stringify(nameVal)}! How old are you?</Text>
+            <View style={{ flexDirection: "row", alignItems: 'center', borderBottomWidth: 1, borderBottomColor: '#e2e2e2', paddingVertical: 5 }}>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                >
+                    <Ionicons name='ios-arrow-back' size={30} />
+                </TouchableOpacity>
+                <Text style={styles.HeaderText}>Sign up</Text>
+            </View>
+            <View style={{ flex: 4 }}>
+                <Text style={{ fontWeight: "bold", fontSize: 40 }}>Hi {route.params.nameVal}! How old are you?</Text>
                 <TextInput style={styles.TextInput}
-                placeholder="Age"
-                placeholderTextColor='#8a8888'
-                maxLength={2}
-                keyboardType='numeric'
-                onChangeText={(val)=> ageChange(val)}
+                    placeholder="Age"
+                    placeholderTextColor='#8a8888'
+                    maxLength={2}
+                    keyboardType='numeric'
+                    onChangeText={(val) => ageChange(val)}
                 />
             </View>
-            <View style={{marginBottom: 10}}>
-                <Text style={{textAlign:'right',fontWeight:'bold',marginBottom:5}}>4 of 4</Text>
-                <View style={{backgroundColor:'#000',height:10,borderRadius:10,marginBottom:20}}></View>
+            <View style={{ marginBottom: 10 }}>
+                <Text style={{ textAlign: 'right', fontWeight: 'bold', marginBottom: 5 }}>4 of 4</Text>
+                <View style={{ backgroundColor: '#000', height: 10, borderRadius: 10, marginBottom: 20 }}></View>
                 {data.check_age ?
-                <TouchableOpacity style={styles.Button}
-                onPress={()=>navigation.navigate('age')}
-                >
-                <Text style={styles.ButtonText}>Next</Text>
-                </TouchableOpacity>
-                :
-                <TouchableOpacity style={styles.Button}>
-                    <Text style={styles.ButtonText}>Next</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={styles.Button}
+                        onPress={() => navigation.navigate('Get Gender', {
+                            name: route.params.nameVal
+                        })}
+                    >
+                        <Text style={styles.ButtonText}>Next</Text>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity style={styles.Button}>
+                        <Text style={styles.ButtonText}>Next</Text>
+                    </TouchableOpacity>
                 }
             </View>
         </View>
@@ -63,31 +69,36 @@ export default function GetAge({route,navigation}){
 
 const styles = StyleSheet.create({
     Container: {
-            display: "flex",
-            flex: 1,
-            paddingTop: 20,
-            marginHorizontal: 15
-        },
-        Header: {
-            flex: 1,
-            alignSelf: 'center',
-            textAlign: "center",
-            fontWeight: 'bold'
-        },
-        TextInput: {
-            padding: 10,
-            fontSize: 25
-        },
-        Button: {
-            padding: 15,
-            borderRadius: 5,
-            backgroundColor: '#bd081c',
-            justifyContent: "center"
-        },
-        ButtonText: {
-            color: '#fff',
-            alignSelf: "center",
-            fontWeight: 'bold',
-            fontSize: 20
-        }
+        display: "flex",
+        flex: 1,
+        paddingTop: Constants.statusBarHeight,
+        marginHorizontal: 15
+    },
+    Header: {
+        flex: 1,
+        alignSelf: 'center',
+        textAlign: "center",
+        fontWeight: 'bold'
+    },
+    HeaderText: {
+        flex: 1,
+        alignSelf: 'center',
+        textAlign: "center",
+    },
+    TextInput: {
+        padding: 10,
+        fontSize: 25
+    },
+    Button: {
+        padding: 15,
+        borderRadius: 5,
+        backgroundColor: '#bd081c',
+        justifyContent: "center"
+    },
+    ButtonText: {
+        color: '#fff',
+        alignSelf: "center",
+        fontWeight: 'bold',
+        fontSize: 20
+    }
 })

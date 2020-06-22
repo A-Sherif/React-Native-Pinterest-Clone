@@ -1,23 +1,23 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
-export default function ResetScreen({navigation}){
-    return(
+export default function ResetScreen({ navigation }) {
+    return (
         <View style={styles.Container}>
             <View style={styles.Header}>
                 <TouchableOpacity
-                onPress={()=>navigation.goBack()}
+                    onPress={() => navigation.goBack()}
                 >
-                    <Ionicons name='ios-arrow-back' size={30}/>
+                    <Ionicons name='ios-arrow-back' size={30} />
                 </TouchableOpacity>
-                    <Text style={{textAlign:"center",marginHorizontal: 150}}>Log in</Text>
-                </View> 
-            <Text style={{fontSize:30, fontWeight:'bold', marginVertical:5}}>Let's find your Pinterest account</Text>
-            <Text style={{marginHorizontal:10,marginVertical:5}}>What's your email address,name or username?</Text>
-            <View style={{flexDirection:"row",alignItems:"center"}}>
-                <Ionicons name='ios-search' size={30}/>
-                <TextInput style={styles.TextInput}></TextInput> 
+                <Text style={{ textAlign: "center", marginHorizontal: 150 }}>Log in</Text>
+            </View>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', marginVertical: 5 }}>Let's find your Pinterest account</Text>
+            <Text style={{ marginHorizontal: 10, marginVertical: 5 }}>What's your email address,name or username?</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Ionicons name='ios-search' size={30} />
+                <TextInput style={styles.TextInput}></TextInput>
             </View>
         </View>
     )
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flex: 1,
         marginTop: 25,
-        marginHorizontal:10
+        marginHorizontal: 10
     },
     Header: {
         marginHorizontal: 10,

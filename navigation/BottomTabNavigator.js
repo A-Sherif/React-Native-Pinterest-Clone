@@ -20,7 +20,7 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME} 
     tabBarOptions={{
-      showLabel: false,
+      showLabel: true,
       keyboardHidesTabBar: true,
       style:{marginBottom:30,height: 50, width:250,marginHorizontal:70,borderRadius:50,position:"absolute"}
     }}
@@ -54,7 +54,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} color='#000' name="md-contact" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} color='#000' name="md-person" />,
           tabBarAccessibilityLabel: 'Profile'
         }}
       />
